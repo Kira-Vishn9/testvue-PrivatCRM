@@ -178,9 +178,9 @@ td > span > span:not(td > span > span:last-child) {
 th:nth-child(8) {
   width: 50px;
 }
-th:nth-child(7),
 th:nth-child(2),
 th:nth-child(6),
+th:nth-child(7),
 th:nth-child(12),
 th:nth-child(13) {
   width: 90px;
