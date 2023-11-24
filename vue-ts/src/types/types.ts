@@ -10,8 +10,8 @@ export type DataJSONType = {
   order_sum: number;
   order_payed: string;
   pay_status: string;
-  courier_comment: string;
-  inner_comment: string;
+  courier_comment: string | null;
+  inner_comment: string | null;
 };
 
 export type DateType = {

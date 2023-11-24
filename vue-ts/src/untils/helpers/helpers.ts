@@ -5,12 +5,13 @@ export const getParseDate = (date: string) => {
 };
 export const getToday = () => today;
 export const getTomorrow = () => today + 1;
-export const getMinValueFromArray = (array: number[] | undefined) => {
-  if (array === undefined) return;
+export const getMinValueFromArray = (array: number[] | undefined): number => {
+  if (array === undefined) throw new Error("Input array is undefined");
   return Math.min(...array);
 };
-export const getMaxValueFromArray = (array: number[] | undefined) => {
-  if (array === undefined) return;
+
+export const getMaxValueFromArray = (array: number[] | undefined): number => {
+  if (array === undefined) throw new Error("Input array is undefined");
   return Math.max(...array);
 };
 

@@ -10,7 +10,6 @@ import {
   getMaxValueFromArray,
   formatDate,
 } from "../../../untils/helpers/helpers.ts";
-import arrayCell from "../arrayCell/arrayCell.vue";
 
 const arrayTitle: string[] = [
   "id",
@@ -79,12 +78,18 @@ const changeStateArrowToDsc = () => {
 };
 const sortData = () => {
   rawData.value.sort((a, b) => {
-    if (!a.computedArray || !b.computedArray) return;
+    if (
+      !a.computedArray ||
+      !b.computedArray ||
+      !a.computedArray.length ||
+      !b.computedArray.length
+    )
+      return 0;
     if (
       a.computedArray.every((el) => typeof el === "string") &&
       b.computedArray.every((el) => typeof el === "string")
     )
-      return;
+      return 0;
 
     return stateArrow
       ? getMaxValueFromArray(a.computedArray) -
@@ -99,7 +104,7 @@ const sortData = () => {
   <table>
     <thead>
       <tr>
-        <th class="title" v-for="(key, index) in arrayTitle">
+        <th class="title" v-for="key in arrayTitle">
           {{ key }}
         </th>
         <th>

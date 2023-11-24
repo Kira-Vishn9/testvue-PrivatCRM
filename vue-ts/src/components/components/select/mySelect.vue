@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { defineComponent } from "vue";
+import { defineProps, defineEmits } from "vue";
+
 const opitionsSelect = [
   "Начинается через Х дней",
   "заканчивается сегодня",
@@ -7,16 +8,19 @@ const opitionsSelect = [
   "заканчивается через Х дней",
   "закончилось Х дней назад",
 ];
-const props = defineProps(["modelValue"]);
+const props = defineProps({
+  modelValue: String,
+});
 const emits = defineEmits(["update:modelValue"]);
+const changeValue = (event: Event) => {
+  if (!(event.target instanceof HTMLInputElement)) return;
+  emits("update:modelValue", event.target.value);
+};
 </script>
 
 <template>
   <div id="example">
-    <select
-      :value="props.modelValue"
-      @change="emits('update:modelValue', $event.target.value)"
-    >
+    <select :value="props.modelValue" @change="changeValue">
       <option :value="''">Please Select</option>
       <option v-for="option in opitionsSelect" :value="option" :key="option">
         {{ option }}
