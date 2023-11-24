@@ -118,7 +118,8 @@ const sortData = () => {
         </th>
       </tr>
     </thead>
-    <tbody>
+
+    <tbody class="nothing">
       <tr v-for="entry in rawData">
         <td v-for="(value, key) in entry">
           <template v-if="Array.isArray(value)">
@@ -142,6 +143,7 @@ const sortData = () => {
       </tr>
     </tbody>
   </table>
+  <div v-if="rawData.length === 0"><h2>Ничего не найдено</h2></div>
 </template>
 
 <style scoped>
@@ -182,10 +184,6 @@ th:nth-child(6),
 th:nth-child(12),
 th:nth-child(13) {
   width: 90px;
-}
-
-th.active {
-  color: #fff;
 }
 
 th.active .arrow {
